@@ -35,7 +35,7 @@ def create_file(filename):
         fi.close()
 
 # function determines if command line argument for output file was specified
-def specific_output(arg_ou):
+def specific_output():
     if arg_ou == "None":
         print("Output File Not Specified, using Default")
         return False
@@ -43,12 +43,22 @@ def specific_output(arg_ou):
         print('Output File: ', arg_ou)
         return True
 
-# function uses create_file and specific_output to:
-#   - 
+# function takes file name and iterates it until it finds one that doesn't exist
+def filename_iterator(file):
+    # while file exists, iterate its name
+    while file_exists(file):
+        i = int(file[-4])
+
+
+# function uses create_file and specific_output to: 
 def new_out_file(filename):
+    output_determinant == specific_output()
     print("Doing Logic")
     # if specified filename argument exists
+    if output_determinant == True:
         # if filename exists
+        if file_exists(filename):
+            print("Do Logic")
             # while loop: while filename exists, iterate until it doesn't
             # when loop exits, create file
         # else filename doesn't exist
