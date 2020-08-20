@@ -1,5 +1,5 @@
 #########################################################################################################
-###                         DEFANGER. Defangs URLs and IP addresses.                                  ###             
+###                         DEFANGER. Defangs URLs and IP addresses en masse                          ###             
 #########################################################################################################
 
 # import packages
@@ -11,15 +11,14 @@ from defang import defang
 parser = argparse.ArgumentParser(description="defanger parse")
 parser.add_argument("-i", "--input", help = "Designate Input File", required=True)
 parser.add_argument("-o", "--output", help = "Designate Output File", required=False)
+parser.add_argument("-t", "--terminal", help = "Output to Terminal", required=False)
+
+# parse the args
 args = parser.parse_args()
 
 # Name Input / Output variables for ease of use
 arg_in = args.input
 arg_ou = args.output
-
-# error checking, ignore
-# print('inputfile: ', arg_in)
-# print('outputfile: ', arg_ou)
 
 # function checks if filename exists
 def file_exists(filename):
@@ -82,14 +81,6 @@ def filename_iterator(file):
         i = int(known_good_iterator)
         j = i + 1
 
-        # Debugging Block
-        # print("known good iterator: ", known_good_iterator)
-        # print("icheck: ", icheck)
-        # print("file_iterate: ", file_iterate)
-        # print("File Name: ", file)
-        # print("i: ", i)
-        # print("J: ", j)
-
         # Actual Iteration Happens Here
         newfileName = str(icheck.replace(str(i), str(j)))
 
@@ -118,12 +109,6 @@ def file_logic(filename):
     #print("Iterator Exiting, creating new output file")
     create_file(filename)
     return filename
-
-    # else specified filename doesn't exist        
-   # else:
-        # create new file
-       # print("Specified Output Filename doesn't Exist, Creating")
-       # create_file(filename)
 
 # function uses create_file, specific_output, and file_logic to generate the output file
 def new_out_file(filename):
@@ -164,14 +149,14 @@ def run_boi(file_in, file_out):
     # check if input file exists. If it does, proceed.
     # if it doesn't, the program won't run - exit
     if file_exists(file_in) == True:
-        # run output filename through new_out_file.
-        # This will:
-        # 1. Check if the specific output option was used
-        # 2. Check if the specified output filename already exists
-        # 3. If 2 is yes, it will automatically iterate the filename until it finds one that doesn't exist
-        # print("Successfully Selected Input File")
+        
+        # check for file extension
         file_boi = extension_check(file_out)
+
+        # create known good filename
         file_name = new_out_file(file_boi)
+
+        # run through defanger
         defanger(file_in, file_name)
 
     else:
