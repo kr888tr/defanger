@@ -23,7 +23,7 @@ arg_ou = args.output
 # function checks if filename exists
 def file_exists(filename):
 
-    path = '/mnt/c/Users/LJ/scripts/defanger/' + str(filename)
+    path = './' + str(filename)
 
     if os.path.isfile(path):
         # print("File Exists: True!", filename)
