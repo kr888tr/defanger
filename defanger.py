@@ -125,11 +125,7 @@ def file_logic(filename):
        # print("Specified Output Filename doesn't Exist, Creating")
        # create_file(filename)
 
-# function uses create_file, specific_output, and file_logic to:
-# - determine if output file command line argument was used
-#   - if yes, determine if specified output filename  exists
-#       - if yes, iterate the name
-#       - if no, use the name 
+# function uses create_file, specific_output, and file_logic to generate the output file
 def new_out_file(filename):
     # looks for the specific output option
     output_determinant = specific_output(filename)
@@ -184,13 +180,3 @@ def run_boi(file_in, file_out):
 
 # run the program
 run_boi(arg_in, arg_ou)
-
-# closel
-
-# read lines of file into list
-
-# defang urls in list
-    # replace . with [.]
-    # replace https:// with hxxps ://
-
-# write list into lines of new file
