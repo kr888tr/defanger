@@ -3,6 +3,10 @@
 This script will take a .txt file of url's or IP addresses and defang them. 
 Uses https://pypi.org/project/defang/ for the actual defang-ing, this is more of a convenient framework for defanging a large batch of links for use in reporting. 
 
+Setup: 
+
+- BEFORE YOU USE, YOU MUST CHANGE THE "path" variable to something valid for your system. 
+
 Usage: 
 
 python defanger.py -i inputfile.txt -o outputfile.txt
@@ -19,5 +23,10 @@ Behavior:
 
 - If specific output filename is requested, and it already exists, the script will automatically iterate the filename. 
 
-- If the user does not designate a file extension, the script will append a ".txt" extension. 
+- If the user does not designate a file extension, the script will append a ".txt" extension.
+
+
+Upcoming: 
+
+- output to terminal option
 
