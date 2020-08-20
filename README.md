@@ -5,7 +5,9 @@ Uses https://pypi.org/project/defang/ for the actual defang-ing, this is more of
 
 Setup: 
 
-- BEFORE YOU USE, YOU MUST CHANGE THE "path" variable to something valid for your system. 
+- You must have the defanger library installed: 
+ 
+- Do this with "pip install defang" 
 
 Usage: 
 
