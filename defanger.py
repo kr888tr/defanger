@@ -8,10 +8,18 @@ import os
 from defang import defang
 
 # Initialize parser and arguments
+
+# parser
 parser = argparse.ArgumentParser(description="defanger parse")
-parser.add_argument("-i", "--input", help = "Designate Input File", required=True)
+
+# arguments for File In, File Out
+parser.add_argument("-i", "--input", help = "Designate Input File", required=False)
 parser.add_argument("-o", "--output", help = "Designate Output File", required=False)
-parser.add_argument("-t", "--terminal", help = "Output to Terminal", required=False)
+
+# arguments for running in command line
+parser.add_argument("-c", "--cli", help = "Input from Terminal", required=False)
+parser.add_argument("-t", "--clo", help = "Output to Terminal", required=False)
+
 
 # parse the args
 args = parser.parse_args()
@@ -19,6 +27,24 @@ args = parser.parse_args()
 # Name Input / Output variables for ease of use
 arg_in = args.input
 arg_ou = args.output
+
+arg_te = args.clo
+arg_cl = args.cli
+
+
+# function determines where to get input / output from
+#def run_options(fi, fo, cli, clo):
+    # if there is file in and file out
+
+    # if there is file in and command line out
+
+    # if there is command line in and command line out
+
+    # everything else won't work
+    
+
+    # make something to throw the defanged text through a defang checker that looks for "http" in all instances
+
 
 # function checks if filename exists
 def file_exists(filename):
@@ -34,7 +60,7 @@ def file_exists(filename):
 
 # function adds '.txt' to filename that doesn't have it
 def extension_check(filename):
-    if ".txt" in filename:
+    if ".txt" in str(filename):
         return filename
     else:
         print("You forgot a file extension, adding '.txt'")
@@ -127,7 +153,7 @@ def new_out_file(filename):
     else:
         # call file_logic with default filename
         print("No Output File Specified, using Default")
-        file_name = file_logic("defanger_output_1.txt")
+        file_name = file_logic("defanger_output")
         return file_name
 
 # defanger function - reads input file line by line, defangs, and writes result to output file.
@@ -146,6 +172,7 @@ def defanger(in_file, out_file):
 
 # run function - calls functions
 def run_boi(file_in, file_out):
+
     # check if input file exists. If it does, proceed.
     # if it doesn't, the program won't run - exit
     if file_exists(file_in) == True:
